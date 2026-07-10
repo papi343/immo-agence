@@ -41,9 +41,7 @@ class UserController extends Controller
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
-        if (isset($data['password']) && !empty($data['password'])) {
-            $data['password'] = Hash::make($data['password']);
-        } else {
+        if (!isset($data['password']) || empty($data['password'])) {
             unset($data['password']);
         }
 
